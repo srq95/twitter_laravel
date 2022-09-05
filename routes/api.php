@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+  return $request->user();
 });
 
-Route::get('/tweets', function() {
-  return Tweet::with('user:id,name,username,avatar')->latest()->get();
+Route::get('/tweets', function () {
+  return Tweet::with('user:id,name,username,avatar')->latest()->paginate(10);
 });
